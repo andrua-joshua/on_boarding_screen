@@ -6,6 +6,9 @@ class OnBoardingScreen extends StatefulWidget {
   // Background Color
   final Color? backgourndColor;
 
+  //option for whether to show the skip or not
+  final bool showSkip;
+
   // Page List of OnBoardingModel class
   final List<OnBoardingModel> pages;
 
@@ -43,6 +46,7 @@ class OnBoardingScreen extends StatefulWidget {
     Key? key,
     required this.pages,
     required this.onSkip,
+    this.showSkip = true,
     this.backgourndColor = Colors.white,
     this.leftIcon = Icons.arrow_circle_left_rounded,
     this.rightIcon = Icons.arrow_circle_right_rounded,
@@ -89,7 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
+            widget.showSkip? Container(
               padding: const EdgeInsets.only(right: 20, top: 15),
               alignment: Alignment.centerRight,
               child: InkWell(
@@ -103,7 +107,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ),
-            ),
+            ): cobst SizedBox(),
             Expanded(
               child: PageView(
                 controller: _pageController,
